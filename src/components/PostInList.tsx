@@ -1,27 +1,19 @@
-import { Post } from "./SocialPosts";
-import "./App";
+import { Post } from "../App";
+import "./styling.css";
 
-// interface PostProp {
-//   post: Post[];
-//   onDelete: (id: string) => void;
-// }
-//todolistitem
-
-export interface PostProp {
-  onDelete: () => void;
+interface PostProp {
   post: Post;
+  onDelete: () => void;
 }
+
 export default function PostInList({ post, onDelete }: PostProp) {
   return (
     <div>
-      <h2>{post.title}</h2>
-      <p>{post.thought}</p>
-      <button onClick={() => onDelete()}>Delete</button>
+      <div className="post-css">
+        <h1>{post.title}</h1>
+        <p>{post.thought}</p>
+        <button onClick={() => onDelete()}>TrashCan</button>
+      </div>
     </div>
   );
 }
-// export default function PostInList() {
-//     return(
-//   <button onClick={() => onDelete()}></button>
-//     )
-// }

@@ -1,35 +1,64 @@
-import { title } from "process";
 import React, { useState } from "react";
-
-import "./App";
-import { Post } from "./SocialPosts";
+import { Post } from "../App";
+import "./styling.css";
 
 export interface PostFormProps {
-  onSubmit: (Post: any) => void;
+  onSubmit: (post: Post) => void;
   onClose: () => void;
 }
 export default function PostForm({ onSubmit, onClose }: PostFormProps) {
-  const [post, setPost] = useState<Post>({ title: "", thought: "" });
+  const [postFormPost, setPostFormPost] = useState<Post>({
+    title: "",
+    thought: "",
+  });
+
+  function handleChangeTitle(e: React.ChangeEvent<HTMLInputElement>) {
+    return setPostFormPost({
+      title: e.target.value,
+      thought: postFormPost.thought,
+    });
+  }
+  function handleChangeThought(e: React.ChangeEvent<HTMLInputElement>) {
+    return setPostFormPost({
+      title: postFormPost.title,
+      thought: e.target.value,
+    });
+  }
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    onSubmit(post);
+    onSubmit(postFormPost);
+    clearFormValues();
     onClose();
   }
 
-  function handleClose(e: React.ChangeEvent<HTMLInputElement>) {
-    return setPost({ title, thought: e.target.value });
+  function clearFormValues() {
+    setPostFormPost({
+      title: "",
+      thought: "",
+    });
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name={title}
-        placeholder="Enter a todo"
-        value={post.title}
-      />
-      <button type="submit">Add</button>
-    </form>
+    <div>
+      <button onClick={onClose}>X</button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="titleInput"
+          placeholder="Title"
+          value={postFormPost.title}
+          onChange={handleChangeTitle}
+        />
+        <input
+          type="text"
+          name="thoughtInput"
+          placeholder="Thought"
+          value={postFormPost.thought}
+          onChange={handleChangeThought}
+        />
+        <button type="submit">Add Post</button>
+      </form>
+    </div>
   );
 }
-//todoform

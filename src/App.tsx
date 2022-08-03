@@ -1,9 +1,14 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import PostInList from "./components/PostInList";
 
-//socialpost is going in here - import it here
+import PostInList from "./components/PostInList";
+import SocialPosts from "./components/SocialPosts";
+
+export interface Post {
+  title: string;
+  thought: string;
+}
+
 function App() {
   return (
     <div className="App">
@@ -17,7 +22,7 @@ function App() {
       >
         My Thoughts
       </header>
-      <PostInList />
+      <SocialPosts />
     </div>
   );
 }

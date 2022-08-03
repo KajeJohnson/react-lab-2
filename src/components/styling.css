@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis&display=swap");
+
+* {
+  font-family: "Dosis", sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.new-thought-button {
+  padding: 10px;
+  background-color: #03a9f4;
+  color: white;
+  border: solid 2px black;
+  width: 100%;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-css {
+  border: solid 2px black;
+  background-color: white;
+}
